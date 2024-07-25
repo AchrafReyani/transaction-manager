@@ -9,7 +9,7 @@ export async function middleware(req) {
 
   //logged in user gets redirected to the transactions page
   if (user && req.nextUrl.pathname === '/') {
-    return NextResponse.redirect(new URL('/transactions-list', req.url));
+    return NextResponse.redirect(new URL('/transaction-list', req.url));
   }
 
   //no logged in user gets redirected to the login page
@@ -21,5 +21,5 @@ export async function middleware(req) {
 }
 
 export const config = {
-  matcher: ['/', '/transactions-list']
+  matcher: ['/', '/transaction-list']
 }
