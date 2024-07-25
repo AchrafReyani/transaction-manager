@@ -1,6 +1,6 @@
 export default function TransactionForm() {
     return (
-      <form action="addTransaction" className="space-y-4">
+      <form action={"addTransaction"} className="space-y-4">
         <div className="bg-green-50 p-4 rounded-md shadow-sm">
           <label htmlFor="title" className="block text-black font-semibold mb-2">Title</label>
           <input
