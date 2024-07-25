@@ -9,7 +9,6 @@ export default async function TransactionList(){
     const supabase = createServerComponentClient({cookies: () => cookieStore});
     const {data: {session}} = await supabase.auth.getSession();
     const user = session?.user;
-
     // the query that reads the transactions from a specific user
     const {data: transactions, error } = await supabase
         .from('transactions')
@@ -21,7 +20,7 @@ export default async function TransactionList(){
         console.error('An error ocurred while fetching the transactions')
     }
 
-    console.log(transactions);
+    console.log({transactions});
     
     return (
             <div className="bg-white min-h-screen p-6">
