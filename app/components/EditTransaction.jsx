@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from "react"
+import { useState } from "react";
+import { updateTransaction } from "../server-actions/updateTransaction";
 
 export default function EditTransaction({ transaction }) {
   const [showModal, setShowModal] = useState(false);
@@ -29,7 +30,7 @@ export default function EditTransaction({ transaction }) {
             >
               &times;
             </span>
-            <form action="updateTransaction" onSubmit={() => setShowModal(false)} className="space-y-4 mt-6">
+            <form action={updateTransaction} onSubmit={() => setShowModal(false)} className="space-y-4 mt-6">
               <input type="hidden" name="id" value={transaction.id} />
               <div className="bg-green-50 p-4 rounded-md shadow-sm">
                 <label htmlFor="title" className="block text-black font-semibold mb-2">Title</label>

@@ -37,7 +37,7 @@ export default async function TransactionList(){
                 <div className="mt-8 space-y-4">
                   {transactions.map((transaction) => (
                     <div key={transaction.id} className="bg-green-50 p-4 rounded-lg shadow-md">
-                      <h2 className="text-xl font-semibold">{transaction.title} - ${transaction.amount}</h2>
+                      <h2 className="text-xl font-semibold">{transaction.title}  ${transaction.amount}</h2>
                       <p className="text-gray-700">{transaction.description}</p>
                       <div className="mt-4 flex space-x-2">
                         <form action={deleteTransaction} className="flex-grow">
