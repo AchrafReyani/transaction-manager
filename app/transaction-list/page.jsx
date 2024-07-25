@@ -1,4 +1,4 @@
-export default function TransactionsList(){
+export default function TransactionList(){
     return (
         <div>
             <div>
@@ -12,7 +12,7 @@ export default function TransactionsList(){
                         </button>
                     </form>
                 </div>
-                <TransactionsList />
+                <TransactionForm />
             </div>
         </div>
     )
