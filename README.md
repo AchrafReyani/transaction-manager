@@ -58,11 +58,11 @@ Ensure you have the following installed:
     ```jsx
     redirectTo='https://localhost:3000/auth/callback'
 
-4. Run the development server:
+5. Run the development server:
     
     ```bash
     npm run dev
     # or
     yarn dev
 
-5. Open http://localhost:3000 in your browser to see the app.
+6. Open http://localhost:3000 in your browser to see the app.
