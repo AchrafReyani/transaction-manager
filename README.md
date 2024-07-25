@@ -4,8 +4,6 @@
 
 Transaction Manager is a web application designed to help users manage their financial transactions. Users can create, view, edit, and delete transactions in their personal space. This project leverages Next.js, Tailwind CSS, and Supabase for authentication and database management. Feel free to [try it out!](https://transaction-manager-mu.vercel.app)
 
-P.S. Currently only 3 users can login every hour due to the supabase restriction.
-
 ## Features
 
 - User authentication with email magic links using Supabase
