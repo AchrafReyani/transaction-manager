@@ -1,10 +1,27 @@
+import { cookies } from "next/headers";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import EditTransaction from "../components/EditTransaction";
 import TransactionForm from "../components/TransactionForm";
 
 
-export default function TransactionList(){
+export default async function TransactionList(){
+    const cookieStore = cookies();
+    const supabase = createServerComponentClient({cookies: () => cookieStore});
+    const {data: {session}} = await supabase.auth.getSession();
+    const user = session?.user;
 
-    const transactions = [];
+    // the query that reads the transactions from a specific user
+    const {data: transactions, error } = await supabase
+        .from('transactions')
+        .select('*')
+        .eq('user_id', user.id)
+        .order('created_at', {ascending: true})
+
+    if (error) {
+        console.error('An error ocurred while fetching the transactions')
+    }
+
+    console.log(transactions);
     
     return (
             <div className="bg-white min-h-screen p-6">
