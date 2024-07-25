@@ -14,5 +14,6 @@ export async function GET(req) {
         await supabase.auth.exchangeCodeForSession(code);
     }
 
-    return NextResponse.redirect(new URL('/transactions-list', req.url))
+    // redirect the user to the transaction list page
+    return NextResponse.redirect(new URL('/transaction-list', req.url))
 }
