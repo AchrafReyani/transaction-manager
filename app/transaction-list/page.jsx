@@ -1,8 +1,8 @@
 import { cookies } from "next/headers";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import EditTransaction from "../components/EditTransaction";
+import EditTransaction from "../components/EditTransaction"; 
 import TransactionForm from "../components/TransactionForm";
-
+import { deleteTransaction } from "../server-actions/deleteTransaction";
 
 export default async function TransactionList(){
     const cookieStore = cookies();
@@ -40,7 +40,7 @@ export default async function TransactionList(){
                       <h2 className="text-xl font-semibold">{transaction.title} - ${transaction.amount}</h2>
                       <p className="text-gray-700">{transaction.description}</p>
                       <div className="mt-4 flex space-x-2">
-                        <form action="deleteTransaction" method="post" className="flex-grow">
+                        <form action={deleteTransaction} className="flex-grow">
                           <input type="hidden" name="id" value={transaction.id} />
                           <button type="submit" className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
                             Delete
