@@ -53,6 +53,11 @@ Ensure you have the following installed:
     NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
     NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
 
+4. Navigate to \app\components\AuthForm.jsx and edit line 13 to the following:
+
+    ```jsx
+    redirectTo='https://localhost:3000/auth/callback'
+
 4. Run the development server:
     
     ```bash
