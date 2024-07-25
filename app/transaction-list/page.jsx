@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import EditTransaction from "../components/EditTransaction"; 
+import EditTransaction from "../components/EditTransaction";
 import TransactionForm from "../components/TransactionForm";
 import { deleteTransaction } from "../server-actions/deleteTransaction";
 
@@ -24,6 +24,12 @@ export default async function TransactionList() {
 
     // Calculate the total amount of transactions
     const totalAmount = transactions?.reduce((total, transaction) => total + transaction.amount, 0) || 0;
+
+    // Format the date
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+        return new Date(dateString).toLocaleDateString(undefined, options);
+    };
 
     console.log({ transactions });
 
@@ -55,6 +61,7 @@ export default async function TransactionList() {
                             <div key={transaction.id} className="bg-green-50 p-4 rounded-lg shadow-md">
                                 <h2 className="text-xl font-semibold">{transaction.title}  ${transaction.amount.toFixed(2)}</h2>
                                 <p className="text-gray-700">{transaction.description}</p>
+                                <p className="text-gray-500 text-sm">Created on: {formatDate(transaction.created_at)}</p>
                                 <div className="mt-4 flex space-x-2">
                                     <form action={deleteTransaction} className="flex-grow">
                                         <input type="hidden" name="id" value={transaction.id} />
