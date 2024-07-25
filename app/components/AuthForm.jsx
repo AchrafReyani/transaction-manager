@@ -14,11 +14,11 @@ export default function AuthForm() {
         appearance={{
             theme: 'dark',
             button: {
-                className: 'bg-white-400 text-gray-900 hover:bg-gray-600'
-            },
-            input: {
-                className: 'bg-gray-700  border-gray-600 text-white'
-            }
+                className: 'bg-green-500 text-white hover:bg-green-600 rounded-md',
+              },
+              input: {
+                className: 'bg-gray-800 border-gray-600 text-white rounded-md',
+              },
         }}
         />
     );
