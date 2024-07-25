@@ -26,12 +26,17 @@ export default async function TransactionList(){
             <div className="bg-white min-h-screen p-6">
               <div className="max-w-4xl mx-auto">
                 <div className="flex justify-between items-center mb-8">
-                  <h1 className="text-black text-3xl font-bold">Your Transactions</h1>
-                  <form action="/auth/signout" method="post">
-                    <button type="submit" className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
-                      Sign out
-                    </button>
-                  </form>
+                    <img
+                        src="/images/app-logo.png"
+                        alt="App Logo"
+                        className="w-32 h-16 sm:w-48 sm:h-24 lg:w-64 lg:h-32 mr-4"
+                    />
+                    <h1 className="text-black text-3xl font-bold">Your Transactions</h1>
+                    <form action="/auth/signout" method="post">
+                        <button type="submit" className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                            Sign out
+                        </button>
+                    </form>
                 </div>
                 <TransactionForm />
                 <div className="mt-8 space-y-4">
