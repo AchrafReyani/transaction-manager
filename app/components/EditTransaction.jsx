@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from "react";
-import { updateTransaction } from "../server-actions/updateTransaction";
+import { transactionOperation } from "../server-actions/transactionOperations";
 
 export default function EditTransaction({ transaction }) {
   const [showModal, setShowModal] = useState(false);
@@ -10,6 +10,13 @@ export default function EditTransaction({ transaction }) {
     description: transaction.description,
     amount: transaction.amount
   });
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    await transactionOperation('update', formData);
+    setShowModal(false);
+  };
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -30,7 +37,7 @@ export default function EditTransaction({ transaction }) {
             >
               &times;
             </span>
-            <form action={updateTransaction} onSubmit={() => setShowModal(false)} className="space-y-4 mt-6">
+            <form onSubmit={handleSubmit} className="space-y-4 mt-6">
               <input type="hidden" name="id" value={transaction.id} />
               <div className="bg-green-50 p-4 rounded-md shadow-sm">
                 <label htmlFor="title" className="block text-black font-semibold mb-2">Title</label>

@@ -1,9 +1,16 @@
 'use client';
 import { useState } from "react";
-import { addTransaction } from "../server-actions/addTransaction";
+import { transactionOperation } from "../server-actions/transactionOperations";
 
 export default function TransactionForm() {
   const [showModal, setShowModal] = useState(false);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    await transactionOperation('add', formData);
+    setShowModal(false);
+  };
 
   return (
     <div>
@@ -22,7 +29,7 @@ export default function TransactionForm() {
             >
               &times;
             </span>
-            <form action={addTransaction} className="space-y-4 mt-6" onSubmit={() => setShowModal(false)}>
+            <form onSubmit={handleSubmit} className="space-y-4 mt-6">
               <div className="bg-green-50 p-4 rounded-md shadow-sm">
                 <label htmlFor="title" className="block text-black font-semibold mb-2">Title</label>
                 <input
