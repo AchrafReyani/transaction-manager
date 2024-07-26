@@ -16,7 +16,7 @@ export default async function TransactionList() {
     .from('transactions')
     .select('*')
     .eq('user_id', user.id)
-    .order('created_at', { ascending: true });
+    .order('created_at', { ascending: false });
 
   if (error) {
     console.error('An error occurred while fetching the transactions', error);

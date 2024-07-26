@@ -1,4 +1,5 @@
 'use client';
+
 import { useState } from "react";
 import { transactionOperation } from "../server-actions/transactionOperations";
 
@@ -10,6 +11,7 @@ export default function TransactionForm() {
     const formData = new FormData(event.target);
     await transactionOperation('add', formData);
     setShowModal(false);
+    window.location.reload(); // Reload page to reflect changes
   };
 
   return (
